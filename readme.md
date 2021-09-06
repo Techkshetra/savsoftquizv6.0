@@ -19,15 +19,7 @@ User/student Login:<br>
 Username:  user007<br>
 Password:  123456<br><br>
 
-
-Enterprise Version Demo: https://savsoftquiz.com/enterprise/application/dist/index.html <br>
-Admin Login: <br><br>
-Username: admin<br>
-Password: admin<br><br>
-
-User/student Login:<br>
-Username:  user007<br>
-Password:  123456<br><br>
+ 
 
 
 Installation Instructions: <br>
@@ -54,6 +46,9 @@ Found any issue or bug?<br>
 Raise issue at https://github.com/Techkshetra/savsoftquizv6.0/issues/<br><br><br>
 
 
+
+Do you need more features?<br>
+Try our Enterprise version demo at https://savsoftquiz.com/ <br><br><br>
 
 
 The MIT License
