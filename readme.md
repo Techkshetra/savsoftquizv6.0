@@ -36,7 +36,8 @@ Installation Instructions: <br>
 3) Update app base url and database credentials (update both database details, readDB and writeDB.) If you are using single database then use same credentials in both.<br>
 4) Import database.sql file to both database (.sql file located in root folder of savsoftquizv6.0 )<br>
 5) Open custom.js file (located at savsoftquizv6.0/application/dist/js/ )<br>
-6) Update both api_base_url and api_site_url variables.<br>
+6) Update both api_base_url and api_site_url variables with public url of 'api/public' folder.<br>
+eg. if domain name is savsoftquiz.org and path of api folder is savsoftquiz.org/savsoftquizv6.0/api/ then base url is 'https://savsoftquiz.org/savsoftquizv6.0/api/public/' and site url is 'https://savsoftquiz.org/savsoftquizv6.0/api/public/index.php<br>
 7) Now visit https://YOUR-DOMAINNAME/application/dist/index.html<br><br>
 
 
