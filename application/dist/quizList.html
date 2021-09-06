@@ -1,0 +1,325 @@
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Quiz list</h1>
+                          
+						<form class=" d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" onsubmit="return false;">
+							<div class="input-group">
+								<input class="form-control" id="search" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" autocomplete=off  />
+								<button class="btn btn-primary" id="btnNavbarSearch" type="button" onclick="sqQuizList('0');"><i class="fas fa-search"></i></button>
+							</div>
+						</form>
+                        <br><br>                        
+						
+                        <div class="row">
+                            <div class="col-xl-12">
+								<button class="btn btn-sm btn-primary admin-only" onClick="addNewQuiz('sq_quiz','#newQuizModal');">Add new</button>
+								<br><br>
+								
+								<div class="table-responsive" style="min-height:250px;">
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th><input type='checkbox' id='selectAll'></th>
+												<th>ID</th>
+												<th>Quiz Name</th>
+												<th>Start Time</th>
+												<th>End Time</th>
+												<th>Duration (Min.)</th>
+												<th>Attempt</th>
+												<th class="admin-only">Action</th>
+											</tr>
+										
+										</thead>
+										<tbody id="rowContent">
+											
+										 
+										</tbody>
+									</table>
+								</div>
+								 
+								<button class="btn btn-sm btn-info" id="backBtn" onClick="sqQuizList('n');">Back</button>
+								<button class="btn btn-sm btn-info"  id="nextBtn" onClick="sqQuizList('p');">Next</button>
+								
+								
+								 
+                            </div>
+                             
+                        </div>
+                    </div>
+                </main>
+				
+				
+				
+				
+				
+				
+				
+<div class="modal" tabindex="-1" id="newQuizModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add new quiz</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+	  <div class="form-validations" id="formValidationNew"></div>
+			
+	  <form id="addQuizForm">
+		  <div   class="newQuizForm" id="newQuizForm-1">
+		  <div class="row">
+			<div class="col-12">
+							
+							
+							 <div class="form-group">
+								<label>Quiz Name</label>
+								<input type="text" class="form-control" id="sq_quiz-quiz_name" name="quiz_name">
+							 </div>
+					 
+							 <div class="form-group">
+								<label>Description</label>
+								<textarea class="form-control" id="sq_quiz-description"  name="description"></textarea>
+							 </div>
+			</div>	  
+		  </div>
+		  <div class="row">
+			<div class="col-6">
+							 <div class="form-group">
+								<label>Start Datetime</label>
+								<input type="datetime-local" class="form-control" id="sq_quiz-start_datetime"  name="start_datetime">
+							 </div>
+							 <br>
+			<a href="javascript:toggleEle2('#editQuizAdvanceSettings');">Advance settings</a><br>
+			</div>
+			<div class="col-6">
+							 <div class="form-group">
+								<label>End Datetime</label>
+								<input type="datetime-local" class="form-control" id="sq_quiz-end_datetime"  name="end_datetime">
+							 </div>	
+
+			</div>
+		</div>
+		  <div class="row" id="editQuizAdvanceSettings" style="display:none;">
+			<div class="col-6">
+
+							 <div class="form-group">
+								<label>Max Attempt</label>
+								<input type="number" class="form-control" id="sq_quiz-max_attempt"  value="1" name="max_attempt">
+							 </div>
+
+							 <div class="form-group">
+								<label>Correct Score</label>
+								<input type="number" class="form-control" id="sq_quiz-correct_score"   value="1" name="correct_score">
+							 </div>
+
+							 <div class="form-group">
+								<label>Duration (Min.)</label>
+								<input type="number" class="form-control" id="sq_quiz-duration" value="60" name="duration">
+								 
+							 </div>	
+			
+							 <div class="form-group">
+								<label>Show Result</label>
+								<select class="form-control" id="sq_quiz-show_result" onChange="toggleEle(this.value,'#sq_quiz-show_result_on_date');" name="show_result" >
+								<option value="0"  >No</option>
+								<option value="1" selected >Yes</option>
+								</select>
+								<span style="color:#666666;font-size:11px;line-height:2px;">Show result after submitting quiz.</span>
+								<input type="datetime-local" class="form-control" id="sq_quiz-show_result_on_date" name="show_result_on_date" >
+								<span style="color:#666666;font-size:11px;line-height:2px;">If yes, select datetime to declare result</span>
+								
+							 </div>	
+			
+			</div>	  
+			<div class="col-6">
+							 
+							 <div class="form-group">
+								<label>Min. % to pass</label>
+								<input type="number" class="form-control" id="sq_quiz-min_pass_percentage"   value="10" name="min_pass_percentage">
+							 </div>
+							 <div class="form-group">
+								<label>Incorrect Score</label>
+								<input type="number" class="form-control" id="sq_quiz-incorrect_score"   value="0" name="incorrect_score">
+							 </div>
+							 <div class="form-group">
+								<label>Instant Answer</label>
+								<select class="form-control" id="sq_quiz-instant_result" name="instant_result">
+								<option value="0" selected >No</option>
+								<option value="1"  >Yes</option>
+								</select>
+								<span style="color:#666666;font-size:11px;line-height:2px;">Show correct answer instantly after answering each question. Useful for practice quiz.</span>
+							 </div>	
+							 
+			
+							 
+			</div>	  
+		  </div>
+
+		  </div>
+		  <div  class="newQuizForm" id="newQuizForm-2" style="display:none;">
+		  <div class="row">
+			<div class="col-12">
+				
+				 <div class="form-group">
+								<label>Assign Quiz to (Groups)</label>
+								<div id="newQuizGroup" style="height:200px;overflow-y:scroll;"></div>
+								
+				 </div>
+
+			</div>
+		  </div>
+		  </div>
+	 
+
+	  </form>
+	  
+      </div>
+      <div class="modal-footer">
+	  <a href="javascript:toggleEditor();">Enable Editor</a> 
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info" onClick="addQuizBack();" id="addNewBackBtn" style="display:none;">Back</button>
+        <button type="button" class="btn btn-primary" onClick="addQuizSubmit();" id="addNewSubmitBtn" style="display:none;">Submit & Add Questions</button>
+        <button type="button" class="btn btn-info" onClick="addQuizNext();" id="addNewNextBtn" >Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="modal" tabindex="-1" id="editQuizModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit quiz</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+ 
+  <div class="form-validations" id="formValidationEdit"></div>
+	
+ 	  <form id="editQuizForm">
+		  <div   class="editQuizForm" id="editQuizForm-1">
+		  <div class="row">
+			<div class="col-12">
+							
+							
+							 <div class="form-group">
+								<label>Quiz Name</label>
+								<input type="text" class="form-control" id="edit-quiz_name" name="quiz_name">
+							 </div>
+					 
+							 <div class="form-group">
+								<label>Description</label>
+								<textarea class="form-control" id="edit-description"  name="description"></textarea>
+							 </div>
+			</div>	  
+		  </div>
+		  <div class="row">
+			<div class="col-6">
+							 <div class="form-group">
+								<label>Start Datetime</label>
+								<input type="datetime-local" class="form-control" id="edit-start_datetime"  name="start_datetime">
+							 </div>
+							 <br>
+			<a href="javascript:toggleEle2('#newQuizAdvanceSettings');">Advance settings</a><br>
+			</div>
+			<div class="col-6">
+							 <div class="form-group">
+								<label>End Datetime</label>
+								<input type="datetime-local" class="form-control" id="edit-end_datetime"  name="end_datetime">
+							 </div>	
+
+			</div>
+		</div>
+		  <div class="row" id="newQuizAdvanceSettings" style="display:none;">
+			<div class="col-6">
+
+							 <div class="form-group">
+								<label>Max Attempt</label>
+								<input type="number" class="form-control" id="edit-max_attempt"  value="1" name="max_attempt">
+							 </div>
+
+							 <div class="form-group">
+								<label>Correct Score</label>
+								<input type="number" class="form-control" id="edit-correct_score"   value="1" name="correct_score">
+							 </div>
+
+							 <div class="form-group">
+								<label>Duration (Min.)</label>
+								<input type="number" class="form-control" id="edit-duration" value="60" name="duration">
+								 
+							 </div>	
+			
+							 <div class="form-group">
+								<label>Show Result</label>
+								<select class="form-control" id="edit-show_result" onChange="toggleEle2(this.value,'#sq_quiz-show_result_on_date');" name="show_result" >
+								<option value="0"  >No</option>
+								<option value="1" selected >Yes</option>
+								</select>
+								<span style="color:#666666;font-size:11px;line-height:2px;">Show result after submitting quiz.</span>
+								<input type="datetime-local" class="form-control" id="edit-show_result_on_date" name="show_result_on_date" >
+								<span style="color:#666666;font-size:11px;line-height:2px;">If yes, select datetime to declare result</span>
+								
+							 </div>	
+			
+			</div>	  
+			<div class="col-6">
+							 
+							 <div class="form-group">
+								<label>Min. % to pass</label>
+								<input type="number" class="form-control" id="edit-min_pass_percentage"   value="10" name="min_pass_percentage">
+							 </div>
+							 <div class="form-group">
+								<label>Incorrect Score</label>
+								<input type="number" class="form-control" id="edit-incorrect_score"   value="0" name="incorrect_score">
+							 </div>
+							 <div class="form-group">
+								<label>Instant Answer</label>
+								<select class="form-control" id="edit-instant_result" name="instant_result">
+								<option value="0" selected >No</option>
+								<option value="1"  >Yes</option>
+								</select>
+								<span style="color:#666666;font-size:11px;line-height:2px;">Show correct answer instantly after answering each question. Useful for practice quiz.</span>
+							 </div>	
+							 
+			
+							 
+			</div>	  
+		  </div>
+
+		  </div>
+		  <div  class="editQuizForm" id="editQuizForm-2" style="display:none;">
+		  <div class="row">
+			<div class="col-12">
+				
+				 <div class="form-group">
+								<label>Assign Quiz to (Groups)</label>
+								<div id="editQuizGroup" style="height:200px;overflow-y:scroll;"></div>
+								
+				 </div>
+
+			</div>
+		  </div>
+		  </div>
+	 
+
+	  </form>
+
+ 
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       <button type="button" class="btn btn-info" onClick="editQuizBack();" id="editNewBackBtn" style="display:none;">Back</button>
+        <button type="button" class="btn btn-primary" onClick="editQuizSubmit();" id="editNewSubmitBtn" style="display:none;">Submit</button>
+        <button type="button" class="btn btn-info" onClick="editQuizNext();" id="editNewNextBtn" >Next</button>
+      </div>
+    </div>
+  </div>
+</div>

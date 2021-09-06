@@ -1,0 +1,112 @@
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Category list</h1>
+                         
+						
+                        <div class="row">
+                            <div class="col-xl-12">
+								<button class="btn btn-sm btn-primary" onClick="addNewGroup('sq_category','#newCategoryModal');">Add new</button>
+								<br><br>
+								
+								<div class="table-responsive" style="min-height:250px;">
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th>Category Name</th>
+												<th>Action</th>
+											</tr>
+										
+										</thead>
+										<tbody id="rowContent">
+											
+										
+										</tbody>
+									</table>
+								</div>
+								 
+								
+								 
+                            </div>
+                             
+                        </div>
+                    </div>
+                </main>
+				
+				
+				
+				
+				
+				
+				
+<div class="modal" tabindex="-1" id="newCategoryModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add new category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+		<div class="form-validations" id="formValidationNew"></div>
+		
+         <div class="form-group">
+			<label>Category Name</label>
+			<input type="text" class="form-control" id="sq_category-category_name" >
+		 </div>
+ 
+         <div class="form-group">
+			<label>Parent Category</label>
+			<select class="form-control" id="sq_category-parent_id" >
+				
+			</select>
+		 </div>
+ 
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onClick="submitAddCategory();">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="modal" tabindex="-1" id="editCategoryModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+		<div class="form-validations" id="formValidationEdit"></div>
+
+         <div class="form-group">
+			<label>Category Name</label>
+			<input type="hidden" id="sq_category-id" value="0">
+			<input type="text" class="form-control" id="sq_category-category_name-edit" >
+		 </div>
+ 
+         <div class="form-group">
+			<label>Parent Category</label>
+			<select class="form-control" id="sq_category-parent_id-edit" >
+				
+			</select>
+		 </div>
+ 
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onClick="submitEditCategory();">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

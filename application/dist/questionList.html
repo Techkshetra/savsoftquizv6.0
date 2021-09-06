@@ -1,0 +1,343 @@
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Question list</h1>
+                         
+						<form class=" d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" onsubmit="return false;">
+							<div class="input-group">
+								<input class="form-control" id="search" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" autocomplete=off  />
+								<button class="btn btn-primary" id="btnNavbarSearch" type="button" onclick="getQuestionList('0');"><i class="fas fa-search"></i></button>
+							</div>
+							<div class="form-group" id="AddQuestionCategoryHolder3">
+								<label>Category</label> <a href="javascript:sq_category_parent3(0);" style="font-size:11px;">Reset</a>
+								<div id="mainCategory3">
+								
+								</div>
+								
+							 </div>
+						</form>
+                        <br><br>
+                        <div class="row">
+                            <div class="col-xl-12">
+								<button class="btn btn-sm btn-primary" onClick="addNew('sq_question','#newQuestionModal');">Add new</button>
+								<button class="btn btn-sm btn-danger" onClick="removeRows('sq_question');">Remove Selected</button>
+								<br><br>
+								
+								<div class="table-responsive" style="min-height:250px;">
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th><input type='checkbox' id='selectAll'></th>
+												<th>ID</th>
+												<th>Question Type</th>
+												<th>Question</th>
+												<th>Category Name</th>
+												<th>Action</th>
+											</tr>
+										
+										</thead>
+										<tbody id="rowContent">
+											
+										
+										</tbody>
+									</table>
+								</div> 
+								<button class="btn btn-sm btn-info" id="backBtn" onClick="getQuestionList('n');">Back</button>
+								<button class="btn btn-sm btn-info"  id="nextBtn" onClick="getQuestionList('p');">Next</button>
+								
+								
+								 
+                            </div>
+                             
+                        </div>
+                    </div>
+                </main>
+				
+				
+				
+				
+				
+				
+				
+<div class="modal" tabindex="-1" id="newQuestionModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="questionSubmitTitle">Add new question</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+		<div class="form-validations" id="formValidationNew"></div>
+         
+         <div id="preQuestionForm">
+			 <div class="form-group">
+				<label>Question Type</label>
+				<select class="form-control" id="sq_question-question_type" onChange="toggleOption(this.value);">
+					<option value="Multiple Choice Single Answer">Multiple Choice Single Answer</option>
+					<option value="Multiple Choice Multiple Answers">Multiple Choice Multiple Answers</option>
+					<option value="Short Answer">Short Answer</option>
+					<option value="Long Answer">Long Answer</option>
+				</select>
+			 </div>
+			  <div class="form-group" id="nOptionHolder">
+				<label>Number of options</label>
+				<select class="form-control" id="nOption">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4" selected >4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+				</select>
+			 </div>
+			 <div class="form-group" id="AddQuestionCategoryHolder">
+				<label>Category</label> <a href="javascript:sq_category_parent(0);" style="font-size:11px;">Reset</a>
+				<div id="mainCategory">
+				
+				</div>
+				
+			 </div>
+		 </div>
+		 <div id="questionForm-1" style="display:none;">
+			<form method="post" action="#" id="form-1">
+			<b>MCQ Type (Single Answers)</b>
+			<div class="form-group">
+				<input type="hidden" name="question_type" value="Multiple Choice Multiple Answers">
+				<label>Question</label>
+				<textarea class="form-control" id="f1-question" name="question"></textarea>
+			</div>
+
+			<div class="form-group">
+				<label>Description</label>
+				<textarea class="form-control" id="f1-description" name="description"></textarea>
+			</div>
+
+			<div id="f1-options">
+			<p>Select radio button of correct option</p>
+				<div id="f1-default-option">
+					<div class="form-group DYCLASS">
+						<label>Option 1 <input type="radio" class='f1-option-correct' name='answer' value="xxxx" > </label>
+						<textarea class="form-control f1-option"  name="option"></textarea>
+					</div>
+				</div>			
+			</div>
+			<a href="javascript:addMoreOption('#f1-options','#f1-default-option');">Add more</a>
+			</form>
+		 </div>
+		 
+  		 <div id="questionForm-2" style="display:none;">
+			<form method="post" action="#" id="form-2">
+			<b>MCQ Type (Multiple Answers)</b>
+			<div class="form-group">
+				<label>Question</label>
+				<textarea class="form-control" id="f2-question" name="question"></textarea>
+			</div>
+
+			<div class="form-group">
+				<label>Description</label>
+				<textarea class="form-control" id="f2-description" name="description"></textarea>
+			</div>
+
+			<div id="f2-options">
+			<p>Select checkbox of correct option</p>
+				<div id="f2-default-option">
+					<div class="form-group DYCLASS">
+						<label>Option 1 <input type="checkbox" class='f2-option-correct' name='answer' value="xxxx" > </label>
+						<textarea class="form-control f2-option"  name="option"></textarea>
+					</div>
+				</div>			
+			</div>
+			<a href="javascript:addMoreOption('#f2-options','#f2-default-option');">Add more</a>
+			</form>
+		 </div>
+		 
+  		 <div id="questionForm-3" style="display:none;">
+			<form method="post" action="#" id="form-3">
+			<b>Short Answer Type</b>
+			<div class="form-group">
+				<label>Question</label>
+				<textarea class="form-control" id="f3-question" name="question"></textarea>
+			</div>
+
+			<div class="form-group">
+				<label>Description</label>
+				<textarea class="form-control" id="f3-description" name="description"></textarea>
+			</div>
+
+			<div id="f3-options">
+		
+				<div id="f3-default-option">
+					<div class="form-group DYCLASS">
+						<label>Answer </label>
+						<input type="text" class="form-control f3-option" name="option"  value=""> 
+					</div>
+				</div>	
+				<p>Use comma separated value for multiple possibilities of answer. </p>				
+			</div>
+			</form> 
+		 </div>
+
+
+
+  		 <div id="questionForm-4" style="display:none;">
+			<form method="post" action="#" id="form-4">
+			<b>Long Answer Type</b>
+			<div class="form-group">
+				<label>Question</label>
+				<textarea class="form-control" id="f4-question" name="question"></textarea>
+			</div>
+
+			<div class="form-group">
+				<label>Description</label>
+				<textarea class="form-control" id="f4-description" name="description"></textarea>
+			</div>
+
+			 
+			</form> 
+		 </div>
+		 
+      </div>
+      <div class="modal-footer">
+	   <a href="javascript:toggleEditor();">Enable Editor</a> 
+     
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary"  style="display:none;" id="backBtnQuestion" onClick="showPreQuestion();" >Back</button>
+        <button type="button" class="btn btn-primary" onClick="submitAddPreQuestion();" id="nextBtnQuestion">Next</button>
+        <button type="button" class="btn btn-primary" onClick="submitAddQuestion();" style="display:none;" id="submitButtonQuestion">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal" tabindex="-1" id="editQuestionModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editQuestionTitle">Edit question</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+		<div class="form-validations" id="formValidationEdit"></div>
+         
+      
+		 <div id="edit-questionForm-1" style="display:none;">
+			<form method="post" action="#" id="edit-form-1">
+			<b>MCQ Type (Single Answers)</b>
+			<div class="form-group">
+				<input type="hidden" name="question_type" value="Multiple Choice Multiple Answers">
+				<label>Question</label>
+				<textarea class="form-control" id="edit-f1-question" name="question"></textarea>
+			</div>
+
+			<div class="form-group">
+				<label>Description</label>
+				<textarea class="form-control" id="edit-f1-description" name="description"></textarea>
+			</div>
+
+			<div id="edit-f1-options">
+			<p>Select radio button of correct option</p>
+				<div id="edit-f1-default-option">
+					<div class="form-group DYCLASS">
+						<label>Option 1 <input type="radio" class='edit-f1-option-correct' name='answer' value="xxxx" > </label>
+						<input type="hidden" class="edit-f1-oid" name="oid" value="">
+						<textarea class="form-control edit-f1-option"  name="option"></textarea>
+					</div>
+				</div>			
+			</div>
+		 	</form>
+		 </div>
+		 
+  		 <div id="edit-questionForm-2" style="display:none;">
+			<form method="post" action="#" id="edit-form-2">
+			<b>MCQ Type (Multiple Answers)</b>
+			<div class="form-group">
+				<label>Question</label>
+				<textarea class="form-control" id="edit-f2-question" name="question"></textarea>
+			</div>
+
+			<div class="form-group">
+				<label>Description</label>
+				<textarea class="form-control" id="edit-f2-description" name="description"></textarea>
+			</div>
+
+			<div id="edit-f2-options">
+			<p>Select checkbox of correct option</p>
+				<div id="edit-f2-default-option">
+					<div class="form-group DYCLASS">
+						<label>Option 1 <input type="checkbox" class='edit-f2-option-correct' name='answer' value="xxxx" > </label>
+						<input type="hidden" class="edit-f2-oid" name="oid" value="">
+						<textarea class="form-control edit-f2-option"  name="option"></textarea>
+					</div>
+				</div>			
+			</div>
+			 </form>
+		 </div>
+		 
+  		 <div id="edit-questionForm-3" style="display:none;">
+			<form method="post" action="#" id="edit-form-3">
+			<b>Short Answer Type</b>
+			<div class="form-group">
+				<label>Question</label>
+				<textarea class="form-control" id="edit-f3-question" name="question"></textarea>
+			</div>
+
+			<div class="form-group">
+				<label>Description</label>
+				<textarea class="form-control" id="edit-f3-description" name="description"></textarea>
+			</div>
+
+			<div id="edit-f3-options">
+		
+				<div id="edit-f3-default-option">
+					<div class="form-group DYCLASS">
+						<label>Answer </label>
+						<input type="text" class="form-control edit-f3-option" name="option"  value=""> 
+					</div>
+				</div>	
+				<p>Use comma separated value for multiple possibilities of answer. </p>				
+			</div>
+			</form> 
+		 </div>
+
+
+
+  		 <div id="edit-questionForm-4" style="display:none;">
+			<form method="post" action="#" id="edit-form-4">
+			<b>Long Answer Type</b>
+			<div class="form-group">
+				<label>Question</label>
+				<textarea class="form-control" id="edit-f4-question" name="question"></textarea>
+			</div>
+
+			<div class="form-group">
+				<label>Description</label>
+				<textarea class="form-control" id="edit-f4-description" name="description"></textarea>
+			</div>
+ 
+			 
+			</form> 
+		 </div>
+		 
+      </div>
+      <div class="modal-footer">
+	   <a href="javascript:toggleEditor();">Enable Editor</a> 
+     
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onClick="updateQuestion();"   id="updateButtonQuestion">Update</button>
+      </div>
+    </div>
+  </div>
+</div>

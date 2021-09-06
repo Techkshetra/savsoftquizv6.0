@@ -1,0 +1,69 @@
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Result list</h1>
+                         
+						<form class=" d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" onsubmit="return false;">
+							<div class="input-group">
+								<input class="form-control" id="search" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" autocomplete=off  />
+								<button class="btn btn-primary" id="btnNavbarSearch" type="button" onclick="getResultList();"><i class="fas fa-search"></i></button>
+							</div>
+						</form>
+                        <br><br>
+                        <div class="row admin-only">
+                            <div class="col-xl-12" style="border:1px solid #dddddd;margin-bottom:10px;padding:10px;">
+								Select Group <select id="group_id">
+								<option value='0'>All</option>
+								</select> &nbsp;&nbsp;&nbsp; 
+							From date: <input type="datetime-local" id="fromDate"	> &nbsp;&nbsp;&nbsp; 
+							To date: <input type="datetime-local" id="toDate"	> &nbsp;&nbsp;&nbsp; 
+							<button type='button' class="btn btn-primary" onClick="generateResultReport();">Download Report</button>
+							</div>
+						</div>
+                        <div class="row">
+                            <div class="col-xl-12">
+								 
+								<div class="table-responsive" style="min-height:250px;">
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												 <th>ID</th>
+												<th>Username</th>
+												<th>Full Name</th>
+												<th>Quiz Name</th>
+												<th>Result</th>
+												<th>Obtained %</th>
+												<th>Action</th>
+											</tr>
+										
+										</thead>
+										<tbody id="rowContent">
+											
+										
+										</tbody>
+									</table>
+								</div>
+								<button class="btn btn-sm btn-info" id="backBtn" onClick="getResultList('n');">Back</button>
+								<button class="btn btn-sm btn-info"  id="nextBtn" onClick="getResultList('p');">Next</button>
+								
+								
+								 
+                            </div>
+                             
+                        </div>
+                    </div>
+                </main>
+				
+				
+				
+				
+				
+				
+ 
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,145 @@
+<main>
+	<div class="container-fluid px-4">
+		<h1 class="mt-4" id="result_id"></h1>
+
+
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+			  <li class="nav-item" role="presentation">
+				<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Overview</button>
+			  </li>
+			  <li class="nav-item" role="presentation">
+				<button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#questionReport" type="button" role="tab" aria-controls="questionReport" aria-selected="false">Question Report</button>
+			  </li>
+			  
+			  
+			</ul>
+			<div class="tab-content" id="myTabContent">
+			  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+			  
+				 
+				
+			<div class="row result-table result-row-odd">
+				<div class="col-lg-4 col-8 col-sm-8">
+				Quiz Name: 
+				</div>
+				<div class="col-lg-2 col-4 col-sm-4" id="quiz_name">
+				 
+				</div>
+				<div class="col-lg-4 col-8 col-sm-8">
+				No. of questions:
+				</div>
+				<div class="col-lg-2 col-4 col-sm-4" id="noq">
+				</div>
+			</div>
+				
+			<div class="row result-table">
+				<div class="col-lg-4 col-8 col-sm-8">
+				Duration: 
+				</div>
+				<div class="col-lg-2 col-4 col-sm-4" id="duration">
+				 
+				</div>
+				<div class="col-lg-4 col-8 col-sm-8">
+				Max. Marks:
+				</div>
+				<div class="col-lg-2 col-4 col-sm-4" id="max_score">
+				</div>
+			</div>
+				
+			<div class="row result-table result-row-odd">
+				<div class="col-lg-4 col-8 col-sm-8">
+				Obtained Marks: 
+				</div>
+				<div class="col-lg-2 col-4 col-sm-4" id="obtained_score">
+				 
+				</div>
+				<div class="col-lg-4 col-8 col-sm-8">
+				Obtained %
+				</div>
+				<div class="col-lg-2 col-4 col-sm-4" id="obtained_percentage">
+				</div>
+			</div>
+				
+			<div class="row result-table">
+				<div class="col-lg-4 col-8 col-sm-8">
+				Time Spent: 
+				</div>
+				<div class="col-lg-2 col-4 col-sm-4" id="time_spent">
+				 
+				</div>
+				<div class="col-lg-4 col-8 col-sm-8">
+				Question Attempted:
+				</div>
+				<div class="col-lg-2 col-4 col-sm-4" id="attempted_questions">
+				</div>
+			</div>
+				
+			<div class="row result-table result-row-odd">
+				<div class="col-lg-4 col-8 col-sm-8">
+				Correct Answers: 
+				</div>
+				<div class="col-lg-2 col-4 col-sm-4" id="correct_answers">
+				 
+				</div>
+				<div class="col-lg-4 col-8 col-sm-8">
+				Incorrect Answers:
+				</div>
+				<div class="col-lg-2 col-4 col-sm-4" id="incorrect_answers">
+				</div>
+			</div>
+				
+			<div class="row result-table ">
+				<div class="col-lg-4 col-8 col-sm-8">
+				Result: 
+				</div>
+				<div class="col-lg-2 col-4 col-sm-4" id="result_status">
+				 
+				</div>
+				 
+			</div>
+			 
+			<div class="table-responsive" style="margin-top:40px;">
+			<table class="table table-sm">
+			<thead><tr><th>Category Name</th><th>Total Questions</th><th>Attempted</th><th>Correct</th><th>Incorrect</th><th>Marks</th><th>Time*</th></tr></thead>
+			<tbody id="categoryWise"></tbody>
+			</table>
+			*Time is Approx. (+-10Sec.)
+			</div>
+			<div class="row "  style="margin-top:40px;">
+				<div class="col-lg-6 col-12 col-sm-12">
+					<label>Question vs Time spent (in Seconds)</label>
+					<canvas id="questionChart" width="400" height="400"></canvas>
+				
+				
+				</div>
+				<div class="col-lg-6 col-12 col-sm-12" >
+				 <label>Question vs Marks</label>
+					<canvas id="scoreChart" width="400" height="400"></canvas>
+				
+				</div>
+				 
+			</div>
+				
+			
+
+
+
+
+
+
+
+
+			  </div>
+			  <div class="tab-pane fade" id="questionReport" role="tabpanel" aria-labelledby="questionReport-tab"> 
+			  
+				
+			  
+			  </div>
+			   
+
+
+
+	</div>
+</main>
+						
+						

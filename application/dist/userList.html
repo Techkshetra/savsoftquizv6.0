@@ -1,0 +1,157 @@
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">User list</h1>
+                         
+						<form class=" d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" onsubmit="return false;">
+							<div class="input-group">
+								<input class="form-control" id="search" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" autocomplete=off  />
+								<button class="btn btn-primary" id="btnNavbarSearch" type="button" onclick="getUserList();"><i class="fas fa-search"></i></button>
+							</div>
+						</form>
+                        <br><br>
+                        <div class="row">
+                            <div class="col-xl-12">
+								<button class="btn btn-sm btn-primary" onClick="addNew('user','#newUserModal');">Add new</button>
+								<button class="btn btn-sm btn-danger" onClick="removeRows('user');">Remove Selected</button>
+								<br><br>
+								
+								<div class="table-responsive" style="min-height:250px;">
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th><input type='checkbox' id='selectAll'></th>
+												<th>ID</th>
+												<th>Username</th>
+												<th>Email</th>
+												<th>Full Name</th>
+												<th>Group</th>
+												<th>Account Type</th>
+												<th>Action</th>
+											</tr>
+										
+										</thead>
+										<tbody id="rowContent">
+											
+										
+										</tbody>
+									</table>
+								</div>
+								<button class="btn btn-sm btn-info" id="backBtn" onClick="getUserList('n');">Back</button>
+								<button class="btn btn-sm btn-info"  id="nextBtn" onClick="getUserList('p');">Next</button>
+								
+								
+								 
+                            </div>
+                             
+                        </div>
+                    </div>
+                </main>
+				
+				
+				
+				
+				
+				
+				
+<div class="modal" tabindex="-1" id="newUserModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add new user</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+		<div class="form-validations" id="formValidationNew"></div>
+         <div class="form-group">
+			<label>Username</label>
+			<input type="text" class="form-control" id="sq_user-username" >
+		 </div>
+         <div class="form-group">
+			<label>Email</label>
+			<input type="text" class="form-control" id="sq_user-email" >
+		 </div>
+         <div class="form-group">
+			<label>Password</label>
+			<input type="password" class="form-control" id="sq_user-password" >
+		 </div>
+         <div class="form-group">
+			<label>Full Name</label>
+			<input type="text" class="form-control" id="sq_user-full_name" >
+		 </div>
+         <div class="form-group">
+			<label>Group</label>
+			<select class="form-control" id="sq_user-group_ids">
+			
+			</select>
+		 </div>
+         <div class="form-group">
+			<label>Account type</label>
+			<select class="form-control" id="sq_user-account_type_id">
+			
+			</select>
+		 </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onClick="submitAddUser();">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="modal" tabindex="-1" id="editUserModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit user</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+		<div class="form-validations" id="formValidationEdit"></div>
+         <div class="form-group">
+			<label>Username</label>
+			<input type="hidden" id="sq_user-id" value="0">
+			<input type="text" class="form-control" id="sq_user-username-edit" >
+		 </div>
+         <div class="form-group">
+			<label>Email</label>
+			<input type="text" class="form-control" id="sq_user-email-edit" >
+		 </div>
+         <div class="form-group">
+			<label>Password</label>
+			<input type="password" class="form-control" id="sq_user-password-edit" >
+		 </div>
+         <div class="form-group">
+			<label>Full Name</label>
+			<input type="text" class="form-control" id="sq_user-full_name-edit" >
+		 </div>
+         <div class="form-group">
+			<label>Group</label>
+			<select class="form-control" id="sq_user-group_ids-edit">
+			
+			</select>
+		 </div>
+         <div class="form-group">
+			<label>Account type</label>
+			<select class="form-control" id="sq_user-account_type_id-edit">
+			
+			</select>
+		 </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onClick="submitEditUser();">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
