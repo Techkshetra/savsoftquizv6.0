@@ -2373,6 +2373,22 @@ function dashboardStat(){
 }
 
 
+
+
+function sq_enterprise(){
+	$('#title').html("Savsoftquiz.com - Enterprise Version");
+		$('.spinner-border').show();
+	var arg={sq_path:window.location.href};
+	
+		$.post("https://www.savsoftquiz.com/enterprise.php",arg,function(data){
+		$('.spinner-border').hide();
+		$('#main_content').html(data);
+	});
+	
+}
+
+
+
 function logout(){
 	$('.spinner-border').show();
 
