@@ -1,5 +1,7 @@
 var api_base_url="https://YOUR-DOMAINNAME/api/public/";
 var api_site_url="https://YOUR-DOMAINNAME/api/public/index.php/";
+// 0 for disabled 1 for enabled
+var debug_mode=0;
 var user_data;
 var rowLimit=0;
 var numberOfRowPerPage=30;
@@ -64,6 +66,7 @@ function removeRows(contr){
 		
 	}
 	}else{
+		
 		flashMessage("Select one or more rows to remove");
 	}
 }
@@ -91,11 +94,14 @@ function login(){
 		return;
 		}
 		
-	});
-	setTimeout(function(){
-			flashMessage("Request timeout");
-			 
-	},8000);	   
+	}).fail(function(xhr, status, error) {
+		if(debug_mode==1){
+			flashMessage("Request failed to API url: "+api_site_url+"login/index <br>Check api and base url path in dist/js/custom.js file. if api application is hosted on different host (domain) then add CORS of application domain. eg. in index.php of api folder add header('Access-Control-Allow-Origin: *');  ");
+		}else{
+			flashMessage("Request failed, try again");
+		}
+    });
+	    
 	
 }
 
