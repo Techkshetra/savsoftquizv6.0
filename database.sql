@@ -340,7 +340,7 @@ INSERT INTO `sq_setting` (`id`, `label_name`, `setting_name`, `setting_value`, `
 
 CREATE TABLE `sq_user` (
   `id` int(11) NOT NULL,
-  `username` varchar(256) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `password` varchar(256) NOT NULL,
   `email` varchar(256) NOT NULL,
   `full_name` varchar(256) DEFAULT NULL,
