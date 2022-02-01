@@ -32,6 +32,14 @@ Installation Instructions: <br>
 eg. if domain name is savsoftquiz.org and path of api folder is savsoftquiz.org/savsoftquizv6.0/api/ then base url is 'https://savsoftquiz.org/savsoftquizv6.0/api/public/' and site url is 'https://savsoftquiz.org/savsoftquizv6.0/api/public/index.php'<br>
 7) Now visit https://YOUR-DOMAINNAME/application/dist/index.html<br><br>
 
+Default admin logins:
+
+username: admin
+
+password:  admin
+
+If you have any issue to login then read instructions at https://github.com/Techkshetra/savsoftquizv6.0/wiki/First-time-login-troubleshoot 
+
 
 Wiki - Documentation<br>
 https://github.com/Techkshetra/savsoftquizv6.0/wiki<br><br>
