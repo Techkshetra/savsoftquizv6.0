@@ -36,11 +36,7 @@ eg. if domain name is savsoftquiz.org and path of api folder is savsoftquiz.org/
 Wiki - Documentation<br>
 https://github.com/Techkshetra/savsoftquizv6.0/wiki<br><br>
 
-
-Community Support:<br>
-https://savsoftquiz.org/forum/<br>
-Register an account and post your issue.<br><br>
-
+ 
 
 Found any issue or bug?<br>
 Raise issue at https://github.com/Techkshetra/savsoftquizv6.0/issues/<br><br><br>
@@ -50,6 +46,9 @@ Raise issue at https://github.com/Techkshetra/savsoftquizv6.0/issues/<br><br><br
 Do you need more features?<br>
 Try our Enterprise version demo at https://savsoftquiz.com/ <br><br><br>
 
+
+
+Recommended hosting https://bitbullhost.com
 
 The MIT License
 
