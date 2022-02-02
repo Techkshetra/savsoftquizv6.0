@@ -1,13 +1,16 @@
 Savsoft Quiz v6.0 is an Opern Source and Free php based web application (script) to create and manage online quiz, test, exam on your website or server.
 
 
-Minimum Server Requirement:
-PHP version 7.3 or newer is required
-MySQL  version 5.1+
+## Minimum Server Requirement
+- PHP version 7.3 or newer is required
+- tokenizer extension
+- intl extension
+- mysqli extension
+- MySQL  version 5.1+
 
 
 
-Useful links:
+## Useful links
 
 Open Source Version Demo: https://savsoftquiz.org/demo/application/dist/index.html <br>
 Admin Login:<br>
@@ -22,7 +25,8 @@ Password:  123456<br><br>
  
 
 
-Installation Instructions: <br>
+## Installation Instructions
+
 1) Upload zip file and extract.<br>
 2) Open .env file (located at savsoftquizv6.0/api/ ) <br>
 3) Update app base url and database credentials (update both database details, readDB and writeDB.) If you are using single database then use same credentials in both.<br>
@@ -40,19 +44,43 @@ password:  admin
 
 If you have any issue to login then read instructions at https://github.com/Techkshetra/savsoftquizv6.0/wiki/First-time-login-troubleshoot 
 
+## Docker installation
 
-Wiki - Documentation<br>
+The docker-compose file has two containers, mariadb and quiz (the app itself). 
+
+First, clone this repo.
+
+```$ git clone https://github.com/Techkshetra/savsoftquizv6.0.git
+   $ cd savsoftquizv6.0/
+```
+Then edit docker-compose.yml with the following variables as you wish
+
+```
+     - DB_HOST=mariadb   # name of the mariadb container 
+     - DB_USERNAME=exam
+     - DB_NAME=exam
+     - DB_PASSWORD=exam
+     - DOMAINNAME=YOUR-DOMAINNAME
+```
+
+At last,  start the containers:
+
+```
+$ docker-compose up -d
+```
+
+# Wiki - Documentation
 https://github.com/Techkshetra/savsoftquizv6.0/wiki<br><br>
 
  
 
-Found any issue or bug?<br>
+# Found any issue or bug?
 Raise issue at https://github.com/Techkshetra/savsoftquizv6.0/issues/<br><br><br>
 
 
 
-Do you need more features?<br>
-Try our Enterprise version demo at https://savsoftquiz.com/ <br><br><br>
+# Do you need more features?<br>
+Try our Enterprise version demo at https://savsoftquiz.com/
 
 
 
