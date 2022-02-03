@@ -21,7 +21,7 @@ function validate(){
 validate
 
 ## Replace variables in config file
-envsubst < $CONFIG_DIR/.env.template > $CONFIG_DIR/.env || { echo 'Error Replacing Variables in .env config file $CONFIG_DIR' ; exit 1; }
+envsubst < $CONFIG_DIR/.env.template > $CONFIG_DIR/api/.env || { echo 'Error Replacing Variables in .env config file $CONFIG_DIR' ; exit 1; }
 envsubst < $CONFIG_DIR/custom.js.template > $CONFIG_DIR/application/dist/js/custom.js || { echo 'Error Replacing Variables in custom.js config file $CONFIG_DIR' ; exit 1; }
 
 if [ "${1#-}" != "$1" ]; then
