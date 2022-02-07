@@ -69,6 +69,12 @@ At last,  start the containers:
 $ docker-compose up -d
 ```
 
+populate database with file `database.sql`
+
+```bash
+$ mysql -u root -p --protocol tcp exam < database.sql
+```
+
 # Wiki - Documentation
 https://github.com/Techkshetra/savsoftquizv6.0/wiki<br><br>
 
