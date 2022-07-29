@@ -387,7 +387,7 @@ x = setInterval(function() {
   // If the count down is finished, write some text
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById("timmer").innerHTML = "0";
+    document.getElementById("timer").innerHTML = "0";
 	submitQuiz();
   }
 }, 1000);
