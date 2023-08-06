@@ -1,5 +1,6 @@
 Savsoft Quiz v6.0 is an Opern Source and Free php based web application (script) to create and manage online quiz, test, exam on your website or server.
 
+## not working at all after clicking on login it is rendring and no page opened
 
 ## Minimum Server Requirement
 - PHP version 7.3 or newer is required
